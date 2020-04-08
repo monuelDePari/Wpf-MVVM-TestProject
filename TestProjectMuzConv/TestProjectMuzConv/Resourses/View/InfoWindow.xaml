@@ -1,0 +1,50 @@
+﻿<Window x:Class="TestProjectMuzConv.Resourses.View.InfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestProjectMuzConv.Resourses.View"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Title="InfoWindow" Height="600" Width="800" Background="{x:Null}">
+    <Grid Background="White" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0 0 0 20">
+            <Image Source="/Resourses/Assets/YoutubeLogo.png" Height="232" HorizontalAlignment="Left" Width="302"/>
+        </StackPanel>
+        <ListBox Grid.Column="0" Grid.Row="1" ItemsSource="{Binding YoutubePersonInfos}"
+                 SelectedItem="{Binding PersonInfo}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="18" Text="{Binding Path=YoutubePlaylistsId}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" DataContext="{Binding PersonInfo}">
+            <TextBlock Text="Selected Playlist" FontSize="16" FontWeight="DemiBold"/>
+            <TextBlock Text="ID" FontSize="16"/>
+            <TextBlock Text="{Binding YoutubePlaylistsId, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Title" FontSize="16"/>
+            <TextBlock Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="ChannelTitle" FontSize="16"/>
+            <TextBlock Text="{Binding ChannelTitle, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="PublishedAt" FontSize="16"/>
+            <TextBlock Text="{Binding PublishedAt, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Description" FontSize="16"/>
+            <TextBlock Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+    </Grid>
+</Window>
