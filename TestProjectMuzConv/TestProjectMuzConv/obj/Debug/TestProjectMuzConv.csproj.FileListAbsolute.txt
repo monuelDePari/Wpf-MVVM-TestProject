@@ -39,3 +39,10 @@ C:\Users\monuel\source\repos\TestProjectMuzConv\TestProjectMuzConv\bin\Debug\Goo
 C:\Users\monuel\source\repos\TestProjectMuzConv\TestProjectMuzConv\bin\Debug\Newtonsoft.Json.xml
 C:\Users\monuel\source\repos\TestProjectMuzConv\TestProjectMuzConv\obj\Debug\Resourses\View\InfoWindow.g.cs
 C:\Users\monuel\source\repos\TestProjectMuzConv\TestProjectMuzConv\obj\Debug\Resourses\View\InfoWindow.baml
+C:\Users\monuel\source\repos\TestProjectMuzConv\TestProjectMuzConv\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\monuel\source\repos\TestProjectMuzConv\TestProjectMuzConv\bin\Debug\EntityFramework.dll
+C:\Users\monuel\source\repos\TestProjectMuzConv\TestProjectMuzConv\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\monuel\source\repos\TestProjectMuzConv\TestProjectMuzConv\bin\Debug\EntityFramework.xml
+C:\Users\monuel\source\repos\TestProjectMuzConv\TestProjectMuzConv\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\monuel\source\repos\TestProjectMuzConv\TestProjectMuzConv\obj\Debug\Resourses\View\StartupWindow.g.cs
+C:\Users\monuel\source\repos\TestProjectMuzConv\TestProjectMuzConv\obj\Debug\Resourses\View\StartupWindow.baml

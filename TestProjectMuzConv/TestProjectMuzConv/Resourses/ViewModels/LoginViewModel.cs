@@ -9,26 +9,21 @@ namespace TestProjectMuzConv.Resourses.ViewModels
 {
     class LoginViewModel : INotifyPropertyChanged
     {
-        public string Login { get; set; }
+        //public string Login { get; set; }
 
-        private Person selectedPerson;
+        //private Person selectedPerson;
 
-        public ObservableCollection<Person> Persons { get; set; }
+        //public Person SelectedPerson
+        //{
+        //    get { return selectedPerson; }
+        //    set
+        //    {
+        //        selectedPerson = value;
+        //        OnPropertyChanged("SelectedPerson");
+        //    }
+        //}
 
-        public Person SelectedPerson
-        {
-            get { return selectedPerson; }
-            set
-            {
-                selectedPerson = value;
-                OnPropertyChanged("SelectedPerson");
-            }
-        }
-
-        public LoginViewModel()
-        {
-            Persons = new ObservableCollection<Person>();
-        }
+        public LoginViewModel() { }
 
         private RelayCommand loginToYoutube;
         public RelayCommand LoginToYoutube
@@ -38,19 +33,18 @@ namespace TestProjectMuzConv.Resourses.ViewModels
                 return loginToYoutube ??
                     (loginToYoutube = new RelayCommand(obj =>
                     {
-                        Person person = new Person();
-                        person.Login = Login;
-                        Persons.Insert(0, person);
-                        selectedPerson = person;
+                        //Person person = new Person();
+                        //person.Login = Login;
+                        //selectedPerson = person;
                         InfoWindow youtubeWindow = new InfoWindow();
                         youtubeWindow.Show();
                     }));
             }
         }
 
-        private CancelCommand closeLoginWindow;
-        public CancelCommand CloseLoginWindow => closeLoginWindow ??
-                    (closeLoginWindow = new CancelCommand(obj =>
+        private RelayCommand closeLoginWindow;
+        public RelayCommand CloseLoginWindow => closeLoginWindow ??
+                    (closeLoginWindow = new RelayCommand(obj =>
                     {
                         Application.Current.Windows[0].Close();
                     }));
