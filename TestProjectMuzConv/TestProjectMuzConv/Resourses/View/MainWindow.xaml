@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestProjectMuzConv.Models"
+        xmlns:local1="clr-namespace:TestProjectMuzConv.Resourses.ViewModels"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         WindowStyle="None"
@@ -11,12 +12,12 @@
         Title="MainWindow" Height="700" Width="450" Background="{x:Null}">
     <Grid Background="White" Margin="10">
         <StackPanel Margin="50"  HorizontalAlignment="Center">
-            <Image Source="/Resourses/Assets/YoutubeLogo.png" Height="232" HorizontalAlignment="Left" Width="302"/>
+            <Image Source="/Resourses/Assets/YoutubeLogo.png" Height="232" HorizontalAlignment="Left" Width="322"/>
             <Border Background="White" Margin="10 0" CornerRadius="50"/>
-            <StackPanel Margin="25 160 25 25">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button x:Name="Cancel" Margin="0 20 20 20" Command="{Binding CloseLoginWindow}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="CANCEL"  Background="White" Height="30" Foreground="Black" Width="95"/>
-                    <Button x:Name="Submit" Margin="20 20 0 20" Command="{Binding LoginToYoutube}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="SIGN IN" Background="White" Height="30" Foreground="Black" Width="95"/>
+            <StackPanel Margin="0 100 0 25">
+                <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="348">
+                    <Button x:Name="Submit" Margin="20" Command="{Binding LoginToYoutube}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="SIGN IN TO GOOGLE" Background="White" Height="30" Foreground="Black" Width="300"/>
+                    <Button x:Name="Cancel" Margin="20" Command="{Binding CloseLoginWindow}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="CANCEL"  Background="White" Height="30" Foreground="Black" Width="300"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

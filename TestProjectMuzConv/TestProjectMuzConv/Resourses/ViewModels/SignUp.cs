@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Data.Entity;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using TestProjectMuzConv.Models;
@@ -23,7 +24,9 @@ namespace TestProjectMuzConv.Resourses.ViewModels
             }
         }
 
-        public SignUp() { }
+        public SignUp() {
+            SelectedPerson = new Person();
+        }
 
         private RelayCommand signUpWindow;
         private RelayCommand signInWindow;
@@ -32,9 +35,7 @@ namespace TestProjectMuzConv.Resourses.ViewModels
                     {
                         using (personContextDB = new PersonContext())
                         {
-                            Person person = new Person();
-                            person = selectedPerson;
-                            personContextDB.Persons.Add(person);
+                            personContextDB.Persons.Add(selectedPerson);
                             personContextDB.SaveChanges();
                         }
                     }));
@@ -42,7 +43,25 @@ namespace TestProjectMuzConv.Resourses.ViewModels
         public RelayCommand SignInWindow => signInWindow ??
             (signInWindow = new RelayCommand(obj =>
                     {
-                        
+                        using (personContextDB = new PersonContext())
+                        {
+                            Person user = personContextDB.Persons.Where(t => t.Login == SelectedPerson.Login && t.Password == SelectedPerson.Password).FirstOrDefault();
+                            if (user != null)
+                            {
+                                if (user.Login == SelectedPerson.Login && user.Password == SelectedPerson.Password)
+                                {
+                                    MainWindow window = new MainWindow();
+                                    window.Show();
+                                }
+                            }
+                        }
+                    }));
+
+        private RelayCommand closeLoginWindow;
+        public RelayCommand CloseLoginWindow => closeLoginWindow ??
+                    (closeLoginWindow = new RelayCommand(obj =>
+                    {
+                        Application.Current.Windows[0].Close();
                     }));
 
         private void OnPropertyChanged([CallerMemberName]string initials = "")

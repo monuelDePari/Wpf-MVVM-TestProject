@@ -3,9 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TestProjectMuzConv.Resourses.View"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local1="clr-namespace:TestProjectMuzConv.Resourses.ViewModels"
+        xmlns:local="clr-namespace:TestProjectMuzConv"
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
@@ -15,26 +14,17 @@
             <Image Source="/Resourses/Assets/YoutubeLogo.png" Height="232" HorizontalAlignment="Left" Width="302"/>
             <Border Background="White" Margin="10 0" CornerRadius="50"/>
             <StackPanel Margin="25">
-                <TextBox x:Name="loginText" Text="{Binding Path=SelectedPerson.Login, UpdateSourceTrigger=LostFocus}" Margin="15" materialDesign:HintAssist.Hint="Type your nickname here!" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}">
-                    <TextBox.DataContext>
-                        <local1:SignUp/>
-                    </TextBox.DataContext>
-                </TextBox>
-                <TextBox x:Name="passwordText" Text="{Binding Path=SelectedPerson.Password, UpdateSourceTrigger=LostFocus}" Margin="15" materialDesign:HintAssist.Hint="Type your password here!" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}">
-                    <TextBox.DataContext>
-                        <local1:SignUp/>
-                    </TextBox.DataContext>
-                </TextBox>
-                <TextBox x:Name="keyText" Text="{Binding Path=SelectedPerson.Key, UpdateSourceTrigger=LostFocus}" Margin="15" materialDesign:HintAssist.Hint="Type your key here!" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}">
-                    <TextBox.DataContext>
-                        <local1:SignUp/>
-                    </TextBox.DataContext>
-                </TextBox>
+                <StackPanel DataContext="{Binding SelectedPerson}">
+                    <TextBox x:Name="loginText" Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="15" materialDesign:HintAssist.Hint="Type your nickname here!" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"/>
+                    <TextBox x:Name="passwordText" Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="15" materialDesign:HintAssist.Hint="Type your password here!" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"/>
+                    <TextBox x:Name="keyText" Text="{Binding Key, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="15" materialDesign:HintAssist.Hint="Type your key here!" Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"/>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Height="104">
-                    <Button x:Name="SignUp" Margin="0 20 20 20" Command="{Binding SignUpWindow}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Sign Up"  Background="White" Height="30" Foreground="Black" Width="95"/>
-                    <Button x:Name="SignIn" Margin="20 20 0 20" Command="{Binding SignInWindow}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="SIGN IN" Background="White" Height="30" Foreground="Black" Width="95"/>
+                    <Button x:Name="SignUp" Margin="0 0 20 20" Command="{Binding SignUpWindow}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="Sign Up"  Background="White" Height="30" Foreground="Black" Width="95"/>
+                    <Button x:Name="SignIn" Margin="20,27,0,47" Command="{Binding SignInWindow}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="SIGN IN" Background="White" Height="30" Foreground="Black" Width="95"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>
+        <Button  x:Name="Cancel" Command="{Binding CloseLoginWindow}" Content="X" HorizontalAlignment="Left" VerticalContentAlignment="Center" Margin="366,10,0,626" Background="White" Height="30" Foreground="Black" Width="54"/>
     </Grid>
 </Window>

@@ -46,5 +46,6 @@
             <TextBlock Text="Description" FontSize="16"/>
             <TextBlock Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"/>
         </StackPanel>
+        <Button Grid.Column="1" Grid.Row="0" x:Name="Cancel" Command="{Binding CloseLoginWindow}" Content="X" HorizontalAlignment="Left" VerticalContentAlignment="Center" Background="White" Foreground="Black" Width="54" Height="30" Margin="322,10,0,130"/>
     </Grid>
 </Window>

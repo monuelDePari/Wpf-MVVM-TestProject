@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
 namespace TestProjectMuzConv.Models
@@ -9,6 +10,7 @@ namespace TestProjectMuzConv.Models
         private string password;
         private string key;
 
+        [Key]
         public int Id { get; set; }
         public string Login
         {
@@ -16,8 +18,7 @@ namespace TestProjectMuzConv.Models
             set
             {
                 login = value;
-                if (login != null)
-                    OnPropertyChanged("Login");
+                OnPropertyChanged("Login");
             }
         }
 
@@ -27,8 +28,7 @@ namespace TestProjectMuzConv.Models
             set
             {
                 password = value;
-                if (password != null)
-                    OnPropertyChanged("Password");
+                OnPropertyChanged("Password");
             }
         }
 
@@ -38,10 +38,7 @@ namespace TestProjectMuzConv.Models
             set 
             {
                 key = value;
-                if (key != null)
-                {
-                    OnPropertyChanged("Key");
-                }
+                OnPropertyChanged("Key");
             } 
         }
 

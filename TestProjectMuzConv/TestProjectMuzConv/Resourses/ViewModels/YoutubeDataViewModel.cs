@@ -9,6 +9,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using TestProjectMuzConv.Models;
 
 namespace TestProjectMuzConv.Resourses.ViewModels
@@ -45,8 +46,6 @@ namespace TestProjectMuzConv.Resourses.ViewModels
             {
                 credential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
                     GoogleClientSecrets.Load(stream).Secrets,
-                    // This OAuth 2.0 access scope allows for read-only access to the authenticated 
-                    // user's account, but not other types of account access.
                     new[] { YouTubeService.Scope.YoutubeReadonly },
                     "user",
                     CancellationToken.None,
@@ -60,34 +59,45 @@ namespace TestProjectMuzConv.Resourses.ViewModels
                 ApplicationName = this.GetType().ToString()
             });
 
-            // var channelsListRequest = youtubeService.Channels.List("contentDetails");
             var playlistListRequest = youtubeService.Playlists.List("snippet");
             playlistListRequest.Mine = true;
 
-            // Retrieve the contentDetails part of the channel resource for the authenticated user's channel.
             var playlistListResponse = await playlistListRequest.ExecuteAsync();
 
             foreach (var playlist in playlistListResponse.Items)
             {
-                // From the API response, extract the playlist ID that identifies the list
-                // of videos uploaded to the authenticated user's channel.
                 var playlistListId = playlist.Id;
+
                 var title = playlist.Snippet.Title;
+
                 var channelTitle = playlist.Snippet.ChannelTitle;
+
                 var publishedAt = playlist.Snippet.PublishedAt;
+
                 var description = playlist.Snippet.Description;
 
                 YoutubePersonInfo person = new YoutubePersonInfo();
                 person.YoutubePlaylistsId = playlistListId;
+
                 person.Title = title;
+
                 person.ChannelTitle = channelTitle;
+
                 person.PublishedAt = publishedAt.ToString();
+
                 person.Description = description;
 
                 YoutubePersonInfos.Insert(0, person);
                 personInfo = person;
             }
         }
+
+        private RelayCommand closeLoginWindow;
+        public RelayCommand CloseLoginWindow => closeLoginWindow ??
+                    (closeLoginWindow = new RelayCommand(obj =>
+                    {
+                        Application.Current.Windows[2].Close();
+                    }));
 
         private void OnPropertyChanged([CallerMemberName]string initials = "")
         {

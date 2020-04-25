@@ -9,20 +9,6 @@ namespace TestProjectMuzConv.Resourses.ViewModels
 {
     class LoginViewModel : INotifyPropertyChanged
     {
-        //public string Login { get; set; }
-
-        //private Person selectedPerson;
-
-        //public Person SelectedPerson
-        //{
-        //    get { return selectedPerson; }
-        //    set
-        //    {
-        //        selectedPerson = value;
-        //        OnPropertyChanged("SelectedPerson");
-        //    }
-        //}
-
         public LoginViewModel() { }
 
         private RelayCommand loginToYoutube;
@@ -33,9 +19,6 @@ namespace TestProjectMuzConv.Resourses.ViewModels
                 return loginToYoutube ??
                     (loginToYoutube = new RelayCommand(obj =>
                     {
-                        //Person person = new Person();
-                        //person.Login = Login;
-                        //selectedPerson = person;
                         InfoWindow youtubeWindow = new InfoWindow();
                         youtubeWindow.Show();
                     }));
@@ -46,7 +29,7 @@ namespace TestProjectMuzConv.Resourses.ViewModels
         public RelayCommand CloseLoginWindow => closeLoginWindow ??
                     (closeLoginWindow = new RelayCommand(obj =>
                     {
-                        Application.Current.Windows[0].Close();
+                        Application.Current.Windows[1].Close();
                     }));
 
         private void OnPropertyChanged([CallerMemberName]string initials = "")
